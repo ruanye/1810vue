@@ -4,6 +4,16 @@ src/assets 放静态资源
 src/components 放组件(基础组件，公共组件)
 src/views 页面级组件一个组件对应的是一个页面
 src/main.js 主入口
+src/api api 文件夹 放 ajax 请求
+
+- api 目录
+  - index.js
+
+1810mock 后端接口
+
+- 1810mock 目录
+  - app.js
+  - banner.js
 
 ## Views 目录(页面)
 
@@ -35,4 +45,4 @@ src/main.js 主入口
 
 1. 轮播图插件使用
    - 下载 npm install vue-awesome-swiper --save
-   -
+   - main.js 增加全局引入

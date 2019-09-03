@@ -1,14 +1,15 @@
 <template>
   <swiper :options="swiperOption">
-    <swiper-slide v-for="(slide, index) in swiperSlides" :key="index"
-      >I'm Slide {{ slide }}</swiper-slide
-    >
+    <swiper-slide v-for="(slide, index) in swiperSlides" :key="index">
+      <img :src="slide" alt="" />
+    </swiper-slide>
     <div class="swiper-pagination" slot="pagination"></div>
   </swiper>
 </template>
 
 <script>
 export default {
+  props: ['swiperSlides'],
   name: 'carrousel',
   data() {
     return {
@@ -17,8 +18,13 @@ export default {
           el: '.swiper-pagination',
         },
       },
-      swiperSlides: [1, 2, 3, 4],
     };
   },
 };
 </script>
+<style lang="less" scoped>
+swiper-slide img {
+  width: 100%;
+  height: auto;
+}
+</style>

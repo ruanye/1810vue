@@ -5,11 +5,14 @@
 </template>
  <!-- Home.vue -->
 <script>
-import api from '../api';
+import { getBaner } from '../api';
 import Slider from '@/components/Slider.vue';
 
 export default {
   name: 'home',
+  async created() {
+    this.imgs = await getBaner();
+  },
   data() {
     return {
       imgs: [],

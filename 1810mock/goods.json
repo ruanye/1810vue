@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "苹果",
+    "price": "200",
+    "img": "https://img12.360buyimg.com/mobilecms/s372x372_jfs/t1/76914/40/7317/325177/5d5607a9Ee1446685/5f2e598eaecaa175.jpg!q70.dpg.webp"
+  },
+  {
+    "id": 2,
+    "name": "香蕉",
+    "price": "200",
+    "img": "https://img10.360buyimg.com/mobilecms/s372x372_jfs/t10813/29/2882379650/116028/d1a5a20b/5cdba9d5N73f411c2.jpg!q70.dpg.webp"
+  },
+  {
+    "id": 3,
+    "name": "鸭梨",
+    "price": "200",
+    "img": "https://img12.360buyimg.com/mobilecms/s372x372_jfs/t1/76914/40/7317/325177/5d5607a9Ee1446685/5f2e598eaecaa175.jpg!q70.dpg.webp"
+  },
+  {
+    "id": 4,
+    "name": "草莓",
+    "price": "200",
+    "img": "https://img13.360buyimg.com/mobilecms/s372x372_jfs/t1/19186/6/15058/72032/5cad9923Ed5359753/f4fb1e70e4241204.jpg!q70.dpg.webp"
+  },
+  {
+    "id": 5,
+    "name": "山楂",
+    "price": "200",
+    "img": "https://img10.360buyimg.com/mobilecms/s372x372_jfs/t1/73020/28/4432/69873/5d286e04Ead7ea07f/cf1c418d4e366140.jpg!q70.dpg.webp"
+  },
+  {
+    "id": 6,
+    "name": "芒果",
+    "price": "200",
+    "img": "https://img12.360buyimg.com/mobilecms/s372x372_jfs/t1/76914/40/7317/325177/5d5607a9Ee1446685/5f2e598eaecaa175.jpg!q70.dpg.webp"
+  }
+]

@@ -14,6 +14,8 @@ src/api api 文件夹 放 ajax 请求
 - 1810mock 目录
   - app.js
   - banner.js
+  - goods.json
+  - fsfile.js 读写文件用的 
 
 ## Views 目录(页面)
 

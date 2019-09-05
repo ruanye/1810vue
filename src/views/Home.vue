@@ -1,25 +1,45 @@
 <template>
   <div class="home">
-    <Slider :swiperSlides="imgs" />
-    {{ this.list }}
+    <div v-if="loading">
+      <div class="loadEffect">
+        <span></span>
+
+        <span></span>
+
+        <span></span>
+
+        <span></span>
+
+        <span></span>
+
+        <span></span>
+
+        <span></span>
+
+        <span></span>
+      </div>
+    </div>
+    <div v-else>
+      <!-- 不使用axiosall时的Home.vue -->
+      <Slider :swiperSlides="imgs" />
+    </div>
   </div>
 </template>
  <!-- Home.vue -->
 <script>
 // 二. 把方法引入
-import { getBaner, getHl, getList } from '../api';
+import { getAll } from '../api';
 import Slider from '@/components/Slider.vue';
 
 export default {
   name: 'home',
   async created() {
-    this.imgs = await getBaner();
-    this.list = await getHl(); // 1 getHl方法调用 ->api/index.js //3 getHl 执行就把结果给了this.list
-    // 三. 调用方法发送请求
-    this.list1 = await getList();
+    [this.imgs, this.list] = await getAll();
+    this.loading = false;
   },
   data() {
     return {
+      loading: true,
       imgs: [],
       list: [],
       list1: [],
@@ -30,3 +50,222 @@ export default {
   },
 };
 </script>
+<style lang="less" scoped>
+.loadEffect {
+  width: 100px;
+
+  height: 100px;
+
+  position: relative;
+
+  margin: 0 auto;
+
+  margin-top: 100px;
+}
+
+.loadEffect span {
+  display: inline-block;
+
+  width: 16px;
+
+  height: 16px;
+
+  border-radius: 50%;
+
+  background: lightgreen;
+
+  position: absolute;
+
+  -webkit-animation: load 1.04s ease infinite;
+}
+
+@-webkit-keyframes load {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.2;
+  }
+}
+
+.loadEffect span:nth-child(1) {
+  left: 0;
+
+  top: 50%;
+
+  margin-top: -8px;
+
+  -webkit-animation-delay: 0.13s;
+}
+
+.loadEffect span:nth-child(2) {
+  left: 14px;
+
+  top: 14px;
+
+  -webkit-animation-delay: 0.26s;
+}
+
+.loadEffect span:nth-child(3) {
+  left: 50%;
+
+  top: 0;
+
+  margin-left: -8px;
+
+  -webkit-animation-delay: 0.39s;
+}
+
+.loadEffect span:nth-child(4) {
+  top: 14px;
+
+  right: 14px;
+
+  -webkit-animation-delay: 0.52s;
+}
+
+.loadEffect span:nth-child(5) {
+  right: 0;
+
+  top: 50%;
+
+  margin-top: -8px;
+
+  -webkit-animation-delay: 0.65s;
+}
+
+.loadEffect span:nth-child(6) {
+  right: 14px;
+
+  bottom: 14px;
+
+  -webkit-animation-delay: 0.78s;
+}
+
+.loadEffect span:nth-child(7) {
+  bottom: 0;
+
+  left: 50%;
+
+  margin-left: -8px;
+
+  -webkit-animation-delay: 0.91s;
+}
+
+.loadEffect span:nth-child(8) {
+  bottom: 14px;
+
+  left: 14px;
+
+  -webkit-animation-delay: 1.04s;
+}
+.loadEffect {
+  width: 100px;
+
+  height: 100px;
+
+  position: relative;
+
+  margin: 0 auto;
+
+  margin-top: 100px;
+}
+
+.loadEffect span {
+  display: inline-block;
+
+  width: 20px;
+
+  height: 20px;
+
+  border-radius: 50%;
+
+  background: lightgreen;
+
+  position: absolute;
+
+  -webkit-animation: load 1.04s ease infinite;
+}
+
+@-webkit-keyframes load {
+  0% {
+    -webkit-transform: scale(1.2);
+
+    opacity: 1;
+  }
+
+  100% {
+    -webkit-transform: scale(0.3);
+
+    opacity: 0.5;
+  }
+}
+
+.loadEffect span:nth-child(1) {
+  left: 0;
+
+  top: 50%;
+
+  margin-top: -10px;
+
+  -webkit-animation-delay: 0.13s;
+}
+
+.loadEffect span:nth-child(2) {
+  left: 14px;
+
+  top: 14px;
+
+  -webkit-animation-delay: 0.26s;
+}
+
+.loadEffect span:nth-child(3) {
+  left: 50%;
+
+  top: 0;
+
+  margin-left: -10px;
+
+  -webkit-animation-delay: 0.39s;
+}
+
+.loadEffect span:nth-child(4) {
+  top: 14px;
+
+  right: 14px;
+
+  -webkit-animation-delay: 0.52s;
+}
+
+.loadEffect span:nth-child(5) {
+  right: 0;
+
+  top: 50%;
+
+  margin-top: -10px;
+
+  -webkit-animation-delay: 0.65s;
+}
+
+.loadEffect span:nth-child(6) {
+  right: 14px;
+
+  bottom: 14px;
+
+  -webkit-animation-delay: 0.78s;
+}
+
+.loadEffect span:nth-child(7) {
+  bottom: 0;
+  left: 50%;
+  margin-left: -10px;
+  -webkit-animation-delay: 0.91s;
+}
+
+.loadEffect span:nth-child(8) {
+  bottom: 14px;
+  left: 14px;
+  -webkit-animation-delay: 1.04s;
+}
+</style>

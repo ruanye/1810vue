@@ -15,7 +15,7 @@ src/api api 文件夹 放 ajax 请求
   - app.js
   - banner.js
   - goods.json
-  - fsfile.js 读写文件用的 
+  - fsfile.js 读写文件用的
 
 ## Views 目录(页面)
 
@@ -73,6 +73,33 @@ import x from '/xx';
 
 - async 表示函数里面有异步，async 的返回值是 promise
 - await 通常跟 promise await+ promise 当前 promise 执行的结果
+- cors 跨域 nginx webpack
+
+## 跨域的方式
+
+1. webpack 代理 vue.config.js
+
+```js
+module.exports = {
+  devServer: {
+    proxy: 'http://localhost:3000'
+  }
+};
+```
+
+2. cors 跨域 跨域资源共享(后端配置)
+   // post get put delete
+   Restful 风格的接口
+   post 新增
+   put 修改
+   get 获取
+   delete 删除
+3. ngix 反向代理
+4. window.name localtion.hash postmessage websocket node 中间层 jsonp docment.domain(只是二级域名) qq.com vip.qq.com
+
+## express 的跨域中间件
+
+npm i cors
 
 ## 插件使用
 

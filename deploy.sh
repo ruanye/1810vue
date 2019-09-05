@@ -2,7 +2,7 @@
 # 确保脚本抛出遇到的错误
 set -e
 git add -A
-git commit -m '接口流程'
+git commit -m 'loading效果实现'
 echo '自动发布'
 git push origin master
 echo '自动发布完成'

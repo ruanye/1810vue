@@ -6,8 +6,15 @@ const cors = require('cors');
 const app = express();
 const banner = require('./banner.js');
 const { rfile } = require('./fsfile.js');
-// 使用中间件进行跨域
-app.use(cors());
+// 所有请求都会先走use
+app.use((req, res, next) => {
+  // 配置cors跨域头
+  // 允许哪个域名跨域
+  res.header('Access-Control-Allow-Origin', '*');
+  // 允许什么方法进行跨域
+  res.header('Access-Control-Allow-Methods', 'GET,POST,DELETE,PUT');
+  next(); // use里面如果不调用next，代码就不继续执行了
+});
 // 轮播图后端接口
 app.get('/banner', (req, res) => {
   res.json(banner);

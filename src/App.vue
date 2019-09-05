@@ -31,4 +31,12 @@ a {
   text-align: center;
   color: #2c3e50;
 }
+.container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  bottom: 60px;
+  overflow-y: scroll;
+}
 </style>

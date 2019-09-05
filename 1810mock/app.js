@@ -17,12 +17,17 @@ app.get('/hl', async (req, res) => {
   const result = await rfile('goods.json');
   res.json(result);
 });
-// put请求测试跨域
-app.put('/hla', (req, res) => {
-  res.json('卖面包');
-});
-app.get('/b', (req, res) => {
-  res.json('卖水果');
+// 分页接口 http://localhost:3000/list?page=3
+app.get('/list', async (req, res) => {
+  const page = +req.query.page; // 拿到前端传过来的页数
+  const list = await rfile('goods.json');
+  const pageData = list.slice((page - 1) * 5, page * 5);
+  // 给前端一个标志 表示有没有下一次
+  const hasMore = !(page * 5 > list.length);
+  res.json({
+    hasMore,
+    pageData,
+  });
 });
 // 监听端口号
 app.listen(3000, () => {

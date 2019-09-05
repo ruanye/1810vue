@@ -107,3 +107,8 @@ npm i cors
    - 下载 npm install vue-awesome-swiper --save
    - main.js 增加全局引入
    - 前端 请求数据 - > 前端拿到数据 -> 渲染页面
+
+## 分页效果
+
+20 1 页 1-5 2 页 6-10 3 页 11-15 4 页 16-20
+localhost:3000/list?page=1

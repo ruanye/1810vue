@@ -11,6 +11,8 @@ const getBaner = () => axios.get('/banner');
 const getHl = () => axios.get('/hl');
 // 首页所有请求放在一起  axios.all ===Promise.all
 const getAll = () => axios.all([getBaner(), getHl()]);
+// 分页请求
+const getPage = page => axios.get(`/list?page=${page}`);
 
-export { getAll };
+export { getAll, getPage };
 export default {};

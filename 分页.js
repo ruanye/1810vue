@@ -1,0 +1,9 @@
+const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+const page = 4;
+// page  = 0
+//  page1 = page*5,page+1*5
+//  // page =1
+//  page2 = page*5
+//  page3 = page*5
+//  page4= page*5
+const res = arr.slice(page * 5, (page + 1) * 5);

@@ -27,6 +27,11 @@ export default new Router({
       component: () => import('./views/List.vue'),
     },
     {
+      path: '/vantlist',
+      name: 'vantlist',
+      component: () => import('./views/VantList.vue'),
+    },
+    {
       path: '/demo',
       name: 'demo',
       component: () => import('./views/Demo.vue'),

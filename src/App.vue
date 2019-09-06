@@ -38,5 +38,6 @@ a {
   top: 0;
   bottom: 60px;
   overflow-y: scroll;
+  z-index: -1;
 }
 </style>

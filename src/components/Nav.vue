@@ -9,6 +9,10 @@
       <i class="iconfont icon-list"></i>
       <span>列表</span>
     </router-link>
+    <router-link to="/vantlist">
+      <i class="iconfont icon-list"></i>
+      <span>vant版列表</span>
+    </router-link>
     <router-link to="/car">
       <i class="iconfont icon-gouwuchezhengpin"></i>
       <span>购物车</span>

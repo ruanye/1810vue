@@ -35,6 +35,7 @@ export default {
   name: 'home',
   async created() {
     [this.imgs, this.list] = await getAll();
+    
     this.loading = false;
   },
   data() {

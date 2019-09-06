@@ -75,6 +75,17 @@ import x from '/xx';
 - await 通常跟 promise await+ promise 当前 promise 执行的结果
 - cors 跨域 nginx webpack
 
+7. ref 的用法
+
+- 写在元素上是获取的原生 dom 元素
+- 写在组件上获取的是组件的实例
+- this.\$refs.你命的名字
+  判断元素滚动到底部
+
+```js
+scorllHeight < scrollTop + clientHeiht + 10;
+```
+
 ## 跨域的方式
 
 1. webpack 代理 vue.config.js
@@ -112,3 +123,13 @@ npm i cors
 
 20 1 页 1-5 2 页 6-10 3 页 11-15 4 页 16-20
 localhost:3000/list?page=1
+
+1.  上课之前讲下课程内容
+2.  切换的时候注意
+3. 
+```js
+async await
+     await + promise 
+ promise.then(data)
+ data = await promise
+```

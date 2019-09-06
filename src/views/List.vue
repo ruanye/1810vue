@@ -1,8 +1,14 @@
 <template>
-  <div class="container">
+  <div class="container" ref="sEle" @scroll="slmore">
     <!-- views/List.vue -->
     <div class="list">
-      {{ list }}
+      <ul>
+        <li v-for="item in list" :key="item.id">
+          <img :src="item.img" />
+          <p>{{ item.name }}</p>
+        </li>
+      </ul>
+
       这是列表
       <button
         :class="{ btn: hasMore, 'btn-default': !hasMore }"
@@ -15,6 +21,7 @@
 </template>
 
 <script>
+import { setTimeout, clearTimeout } from 'timers';
 import { getPage } from '../api';
 
 export default {
@@ -22,6 +29,7 @@ export default {
   created() {
     this.getPageApi();
   },
+  mounted() {},
   data() {
     return {
       page: 1, // 默认请求第一页
@@ -30,6 +38,22 @@ export default {
     };
   },
   methods: {
+    // 封装滚动里面的加载更多事件
+    slfn(ele, fn) {
+      const el = this.$refs[ele];
+      const { scrollHeight, scrollTop, clientHeight } = el;
+      if (clientHeight + scrollTop + 10 > scrollHeight) {
+        fn.apply(this);
+      }
+    },
+    // 滚动事件
+    slmore() {
+      clearTimeout(this.timer);
+      this.timer = setTimeout(() => {
+        this.slfn('sEle', this.loadmore);
+      }, 13);
+      // 获取到滚动的元素
+    },
     async getPageApi() {
       // 如果没有下一页，就不在发请求了
       if (!this.hasMore) return;
@@ -40,6 +64,7 @@ export default {
       this.list = [...this.list, ...list];
     },
     loadmore() {
+      // 加载更多的方法
       this.page = this.page + 1;
       this.getPageApi();
     },

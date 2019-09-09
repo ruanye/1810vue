@@ -10,7 +10,10 @@ const { rfile } = require('./fsfile.js');
 app.use(cors());
 // 轮播图后端接口
 app.get('/banner', (req, res) => {
-  res.json(banner);
+  res.json({
+    code: 200,
+    banner,
+  });
 });
 // 首页商品列表后端接口
 app.get('/hl', async (req, res) => {

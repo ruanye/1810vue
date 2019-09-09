@@ -126,10 +126,18 @@ localhost:3000/list?page=1
 
 1.  上课之前讲下课程内容
 2.  切换的时候注意
-3. 
+3.
+
 ```js
 async await
-     await + promise 
+     await + promise
  promise.then(data)
  data = await promise
 ```
+
+表格
+
+| 值     | 类型   | 说明         | 创建人/修改人 | 修改时间 |
+| ------ | ------ | ------------ | ------------- | -------- |
+| code   | number | 200 成功     | ry/ry         | 2019/9/9 |
+| banner | array  | 图片数组集合 | ry/ry         | 2019/9/9 |

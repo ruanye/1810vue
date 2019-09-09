@@ -28,18 +28,19 @@
  <!-- Home.vue -->
 <script>
 // 二. 把方法引入
-import { getAll } from '../api';
+import { getAll } from '../api/homeApi';
 import Slider from '@/components/Slider.vue';
 
 export default {
   name: 'home',
   async created() {
     [this.imgs, this.list] = await getAll();
-    
+
     this.loading = false;
   },
   data() {
     return {
+      msg: 'hello world',
       loading: true,
       imgs: [],
       list: [],

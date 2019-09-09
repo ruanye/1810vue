@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import { getPage } from '../api';
+import { getPage } from '../api/listApi';
 
 export default {
   created() {

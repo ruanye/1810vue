@@ -86,6 +86,25 @@ import x from '/xx';
 scorllHeight < scrollTop + clientHeiht + 10;
 ```
 
+8. 路由跳转
+
+- route 路由信息对象 router 路由实例
+- 事件 this.\$router.push()
+- router-link tag 用来转化标签名
+- (1) 路由跳转 params 传参 需要配置路由 /:id /: 表示必须有但是不固定的值
+  (2) 如果 params 使用 path 需要用字符串拼接
+
+```js
+ //params的案例
+ :to="{ name: 'detail', params: { id: item.id } }"
+  :to="{ path: `/detail/${item.id}` }"
+```
+
+```js
+ //query 用path和name都可以
+  :to="{ path: `/detail/`, query: { id: item.id } }"
+```
+
 ## 跨域的方式
 
 1. webpack 代理 vue.config.js
@@ -134,4 +153,10 @@ async await
  promise.then(data)
  data = await promise
 ```
+
 
+
+### 组件化的好处
+
+ 可复用 可组合 可维护
+vue router 什么时候用 query 什么时候用 params

@@ -3,10 +3,15 @@
     <!-- views/List.vue -->
     <div class="list">
       <ul>
-        <li v-for="item in list" :key="item.id">
+        <router-link
+          :to="{ path: `/detail/`, query: { id: item.id } }"
+          v-for="item in list"
+          :key="item.id"
+          tag="li"
+        >
           <img :src="item.img" />
           <p>{{ item.name }}</p>
-        </li>
+        </router-link>
       </ul>
 
       这是列表
@@ -21,8 +26,7 @@
 </template>
 
 <script>
-import { setTimeout, clearTimeout } from 'timers';
-import { getPage } from '../api';
+import { getPage } from '../api/listApi';
 
 export default {
   name: 'list',

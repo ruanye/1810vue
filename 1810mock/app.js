@@ -10,10 +10,7 @@ const { rfile } = require('./fsfile.js');
 app.use(cors());
 // 轮播图后端接口
 app.get('/banner', (req, res) => {
-  res.json({
-    code: 200,
-    banner,
-  });
+  res.json(banner);
 });
 // 首页商品列表后端接口
 app.get('/hl', async (req, res) => {
@@ -30,6 +27,13 @@ app.get('/list', async (req, res) => {
   res.json({
     hasMore,
     pageData,
+  });
+});
+// 详情页接口localhost:3000/detail/1
+app.get('/detail/:id', (req, res) => {
+  const { id } = req.params;
+  res.json({
+    good: `id为${id}的商品信息`,
   });
 });
 // 监听端口号

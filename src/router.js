@@ -25,11 +25,11 @@ export default new Router({
       path: '/list',
       name: 'list',
       component: () => import('./views/List.vue'),
-    },
+    },  
     {
       path: '/vantlist',
       name: 'vantlist',
-      component: () => import('./views/VantList.vue'),
+      component: () => import('@/views/VantList.vue'),
     },
     {
       path: '/demo',

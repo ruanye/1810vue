@@ -1,27 +1,30 @@
 <template>
   <div class="home">
     <div v-if="loading">
-      <div class="loadEffect">
-        <span></span>
-
-        <span></span>
-
-        <span></span>
-
-        <span></span>
-
-        <span></span>
-
-        <span></span>
-
-        <span></span>
-
-        <span></span>
-      </div>
+      <Loading></Loading>
     </div>
     <div v-else>
       <!-- 不使用axiosall时的Home.vue -->
       <Slider :swiperSlides="imgs" />
+    </div>
+    <div>
+      <ul class="tablist">
+        <li
+          v-for="(item, index) in navlist"
+          :key="index"
+          @click="changeindex(index)"
+          :class="{ active: index == activeIndex }"
+        >
+          {{ item }}
+        </li>
+      </ul>
+      <ul class="tabcontent">
+        <li v-for="(item, index) in navcontent" :key="index">
+          <template v-if="index == activeIndex">
+            {{ item }}
+          </template>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -30,6 +33,7 @@
 // 二. 把方法引入
 import { getAll } from '../api/homeApi';
 import Slider from '@/components/Slider.vue';
+import Loading from '@/components/Loading.vue';
 
 export default {
   name: 'home',
@@ -40,234 +44,44 @@ export default {
   },
   data() {
     return {
+      activeIndex: 0, // 默认被激活的样式
       msg: 'hello world',
       loading: true,
       imgs: [],
       list: [],
       list1: [],
+      navlist: ['甲方', '乙方', '武老师'],
+      navcontent: ['葛优', 'xxx', '不认识'],
     };
+  },
+  methods: {
+    changeindex(index) {
+      this.activeIndex = index;
+    },
   },
   components: {
     Slider,
+    Loading,
   },
 };
 </script>
 <style lang="less" scoped>
-.loadEffect {
-  width: 100px;
-
-  height: 100px;
-
-  position: relative;
-
-  margin: 0 auto;
-
-  margin-top: 100px;
-}
-
-.loadEffect span {
-  display: inline-block;
-
-  width: 16px;
-
-  height: 16px;
-
-  border-radius: 50%;
-
-  background: lightgreen;
-
-  position: absolute;
-
-  -webkit-animation: load 1.04s ease infinite;
-}
-
-@-webkit-keyframes load {
-  0% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0.2;
+.tablist {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  li {
+    width: 200px;
+    height: 60px;
+    line-height: 60px;
+    border: 1px solid #999;
+    &.active {
+      background: blue;
+      color: white;
+    }
   }
 }
-
-.loadEffect span:nth-child(1) {
-  left: 0;
-
-  top: 50%;
-
-  margin-top: -8px;
-
-  -webkit-animation-delay: 0.13s;
-}
-
-.loadEffect span:nth-child(2) {
-  left: 14px;
-
-  top: 14px;
-
-  -webkit-animation-delay: 0.26s;
-}
-
-.loadEffect span:nth-child(3) {
-  left: 50%;
-
-  top: 0;
-
-  margin-left: -8px;
-
-  -webkit-animation-delay: 0.39s;
-}
-
-.loadEffect span:nth-child(4) {
-  top: 14px;
-
-  right: 14px;
-
-  -webkit-animation-delay: 0.52s;
-}
-
-.loadEffect span:nth-child(5) {
-  right: 0;
-
-  top: 50%;
-
-  margin-top: -8px;
-
-  -webkit-animation-delay: 0.65s;
-}
-
-.loadEffect span:nth-child(6) {
-  right: 14px;
-
-  bottom: 14px;
-
-  -webkit-animation-delay: 0.78s;
-}
-
-.loadEffect span:nth-child(7) {
-  bottom: 0;
-
-  left: 50%;
-
-  margin-left: -8px;
-
-  -webkit-animation-delay: 0.91s;
-}
-
-.loadEffect span:nth-child(8) {
-  bottom: 14px;
-
-  left: 14px;
-
-  -webkit-animation-delay: 1.04s;
-}
-.loadEffect {
-  width: 100px;
-
-  height: 100px;
-
-  position: relative;
-
-  margin: 0 auto;
-
-  margin-top: 100px;
-}
-
-.loadEffect span {
-  display: inline-block;
-
-  width: 20px;
-
-  height: 20px;
-
-  border-radius: 50%;
-
-  background: lightgreen;
-
-  position: absolute;
-
-  -webkit-animation: load 1.04s ease infinite;
-}
-
-@-webkit-keyframes load {
-  0% {
-    -webkit-transform: scale(1.2);
-
-    opacity: 1;
-  }
-
-  100% {
-    -webkit-transform: scale(0.3);
-
-    opacity: 0.5;
-  }
-}
-
-.loadEffect span:nth-child(1) {
-  left: 0;
-
-  top: 50%;
-
-  margin-top: -10px;
-
-  -webkit-animation-delay: 0.13s;
-}
-
-.loadEffect span:nth-child(2) {
-  left: 14px;
-
-  top: 14px;
-
-  -webkit-animation-delay: 0.26s;
-}
-
-.loadEffect span:nth-child(3) {
-  left: 50%;
-
-  top: 0;
-
-  margin-left: -10px;
-
-  -webkit-animation-delay: 0.39s;
-}
-
-.loadEffect span:nth-child(4) {
-  top: 14px;
-
-  right: 14px;
-
-  -webkit-animation-delay: 0.52s;
-}
-
-.loadEffect span:nth-child(5) {
-  right: 0;
-
-  top: 50%;
-
-  margin-top: -10px;
-
-  -webkit-animation-delay: 0.65s;
-}
-
-.loadEffect span:nth-child(6) {
-  right: 14px;
-
-  bottom: 14px;
-
-  -webkit-animation-delay: 0.78s;
-}
-
-.loadEffect span:nth-child(7) {
-  bottom: 0;
-  left: 50%;
-  margin-left: -10px;
-  -webkit-animation-delay: 0.91s;
-}
-
-.loadEffect span:nth-child(8) {
-  bottom: 14px;
-  left: 14px;
-  -webkit-animation-delay: 1.04s;
+.tabcontent {
+  font-size: 40px;
 }
 </style>

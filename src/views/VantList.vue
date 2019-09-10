@@ -40,6 +40,7 @@ export default {
       const { hasMore, pageData: list } = await getPage(this.page);
       this.hasMore = hasMore;
       this.list = [...this.list, ...list];
+      this.finished = true;
     },
     onLoad() {
       // vant提供的滚动到底部的事件

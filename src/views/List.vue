@@ -1,37 +1,44 @@
 <template>
-  <div class="container" ref="sEle" @scroll="slmore">
-    <!-- views/List.vue -->
-    <div class="list">
-      <ul>
-        <router-link
-          :to="{ path: `/detail/`, query: { id: item.id } }"
-          v-for="item in list"
-          :key="item.id"
-          tag="li"
-        >
-          <img :src="item.img" />
-          <p>{{ item.name }}</p>
-        </router-link>
-      </ul>
+  <div>
+    <my-tab>列表</my-tab>
+    <div class="container" ref="sEle" @scroll="slmore">
+      <!-- views/List.vue -->
+      <div class="list">
+        <ul>
+          <router-link
+            :to="{ path: `/detail/`, query: { id: item.id } }"
+            v-for="item in list"
+            :key="item.id"
+            tag="li"
+          >
+            <img :src="item.img" />
+            <p>{{ item.name }}</p>
+          </router-link>
+        </ul>
 
-      这是列表
-      <button
-        :class="{ btn: hasMore, 'btn-default': !hasMore }"
-        @click="loadmore"
-      >
-        {{ hasMore ? "点击加载更多" : "没有数据了" }}
-      </button>
+        这是列表
+        <button
+          :class="{ btn: hasMore, 'btn-default': !hasMore }"
+          @click="loadmore"
+        >
+          {{ hasMore ? "点击加载更多" : "没有数据了" }}
+        </button>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import { getPage } from '../api/listApi';
+import MyTab from '../components/MyTab.vue';
 
 export default {
   name: 'list',
   created() {
     this.getPageApi();
+  },
+  components: {
+    MyTab,
   },
   mounted() {},
   data() {
@@ -73,7 +80,6 @@ export default {
       this.getPageApi();
     },
   },
-  components: {},
 };
 </script>
 <style lang="less" scoped>

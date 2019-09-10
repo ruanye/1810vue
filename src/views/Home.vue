@@ -7,6 +7,8 @@
       <!-- 不使用axiosall时的Home.vue -->
       <Slider :swiperSlides="imgs" />
     </div>
+    <Icon type="wode" size="100" />
+    <Button type="primary">这是我的按钮</Button>
     <div>
       <ul class="tablist">
         <li
@@ -34,6 +36,8 @@
 import { getAll } from '../api/homeApi';
 import Slider from '@/components/Slider.vue';
 import Loading from '@/components/Loading.vue';
+import Icon from '@/components/Icon.vue';
+import Button from '@/components/Button.vue';
 
 export default {
   name: 'home',
@@ -62,6 +66,8 @@ export default {
   components: {
     Slider,
     Loading,
+    Icon,
+    Button,
   },
 };
 </script>

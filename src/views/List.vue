@@ -13,6 +13,7 @@
           >
             <img :src="item.img" />
             <p>{{ item.name }}</p>
+            <button class="btn" @click.stop="addCar(item)">添加到购物车</button>
           </router-link>
         </ul>
 
@@ -49,6 +50,29 @@ export default {
     };
   },
   methods: {
+    // 添加到购物车
+    addCar(single) {
+      // 本地缓存应该有个购物车列表的数组
+      let carlist = localStorage.carlist
+        ? JSON.parse(localStorage.carlist)
+        : [];
+      // item 放入购物车 如果购物车里面此商品存在则数量加1
+      // 判断商品是否已经在购物车里面
+      // eslint-disable-next-line eqeqeq
+      const good = carlist.find(item => item.id == single.id);
+
+      // 如果商品在购物车里面不存在，则数量为1 否则在原来的数量上面加1 定义一个数据的属性叫做count
+      if (!good) {
+        // eslint-disable-next-line no-param-reassign
+        single.count = 1;
+        // 商品没在购物车里 放入购物车数组
+        carlist = [...carlist, single];
+      } else {
+        good.count += 1;
+      }
+      // 把购物车列表重新存到缓存里面
+      localStorage.carlist = JSON.stringify(carlist);
+    },
     // 封装滚动里面的加载更多事件
     slfn(ele, fn) {
       const el = this.$refs[ele];

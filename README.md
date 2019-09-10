@@ -160,3 +160,5 @@ async await
 
  可复用 可组合 可维护
 vue router 什么时候用 query 什么时候用 params
+
+## icon 组件封装 购物车 vue vuex filter(过滤器)
